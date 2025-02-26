@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bengal Tiger Conservation Project - Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="bg-yellow-100 font-sans">
+    <div class="container mx-auto py-8">
+      <div class="bg-white shadow-md rounded-lg p-8">
+        <!-- Header Section -->
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <!-- Dynamically display the user's name -->
+            <h1 class="text-3xl font-bold text-white-600">🐯 Welcome, !</h1>
+          </div>
+        </div>
+
+        <!-- Introduction Section -->
+        <div class="flex items-center justify-between mb-6">
+          <div class="bg-yellow-50 p-4 shadow-md rounded-lg">
+            <h2 class="text-xl font-bold text-brown-800 mb-4">
+              ~ About tiger_name ~
+            </h2>
+            <p class="text-gray-600">
+              The Bengal tiger (Panthera tigris tigris) is one of the most
+              iconic and endangered big cats in the world. Native to the Indian
+              (South Asia) subcontinent, the Bengal tiger plays a crucial role
+              in its ecosystem as an apex predator, maintaining the balance of
+              the habitat. The following outlines detailed information about the
+              Bengal tiger’s population, prey, tourism impact, habitat,
+              poaching, protection efforts, and statistical trends over recent
+              years.
+            </p>
+          </div>
+        </div>
+        <br />
+        <hr />
+
+        <!-- Tabs Section -->
+        <div class="flex space-x-4 mb-6">
+          <button
+            class="tab-btn px-4 py-2 rounded bg-yellow-200 hover:bg-yellow-400 focus:outline-none"
+            data-target="tiger-info"
+          >
+            About Bengal Tigers
+          </button>
+          <button
+            class="tab-btn px-4 py-2 rounded bg-yellow-200 hover:bg-yellow-400 focus:outline-none"
+            data-target="habitat-info"
+          >
+            Habitat
+          </button>
+          <button
+            class="tab-btn px-4 py-2 rounded bg-yellow-200 hover:bg-yellow-400 focus:outline-none"
+            data-target="prey-diet"
+          >
+            Prey and Diet
+          </button>
+          <button
+            class="tab-btn px-4 py-2 rounded bg-yellow-200 hover:bg-yellow-400 focus:outline-none"
+            data-target="location"
+          >
+            Location
+          </button>
+          <button
+            class="tab-btn px-4 py-2 rounded bg-yellow-200 hover:bg-yellow-400 focus:outline-none"
+            data-target="tourism"
+          >
+            Tourism and Conservation
+          </button>
+          <button
+            class="tab-btn px-4 py-2 rounded bg-yellow-200 hover:bg-yellow-400 focus:outline-none"
+            data-target="poaching"
+          >
+            Poaching
+          </button>
+          <button
+            class="tab-btn px-4 py-2 rounded bg-yellow-200 hover:bg-yellow-400 focus:outline-none"
+            data-target="questions-and-help"
+          >
+            Q&A
+          </button>
+        </div>
+
+        <br />
+        <!-- Content Sections -->
+        <div id="tiger-info" class="tab-content">
+          <div class="bg-pink-50 p-4 shadow-md rounded-lg">
+            <h2 class="text-lg font-bold text-pink-600 mb-4">
+              tiger_name 's Information
+            </h2>
+            <ul class="space-y-2 list-disc pl-6">
+              <li>Weight: 160-230 kg (350-500 lb)</li>
+              <li>Height: 1.1 m (3.6 ft)</li>
+              <li>Status: Endangered</li>
+              <li>Population: ~ 3,200</li>
+            </ul>
+            <canvas id="populationChart"></canvas>
+          </div>
+        </div>
+        <div id="prey-diet" class="tab-content hidden">
+          <div class="bg-green-50 p-4 shadow-md rounded-lg">
+            <h2 class="text-lg font-bold text-green-600 mb-4">Prey and Diet</h2>
+            <p>
+              tiger_name is a carnivore and primarily preys on large mammals.
+              The availability of prey is a critical factor in their survival.
+              Common prey species for tiger_name include:
+            </p>
+            <ul class="space-y-2 list-disc pl-6">
+              <li>
+                Ungulates: such as chital (spotted deer), sambar, barasingha,
+                and nilgai.
+              </li>
+              <li>Wild boar and monkeys (in some areas).</li>
+              <li>Smaller mammals: like civets, jackals, and leopards.</li>
+              <li>
+                In some cases, tigers will also prey on domestic livestock,
+                which can bring them into conflict with humans.
+              </li>
+              <li>
+                In recent years, prey depletion has been a concern in some
+                regions, contributing to human-wildlife conflict and reducing
+                tiger numbers in certain areas.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="location" class="tab-content hidden">
+          <div class="bg-purple-50 p-4 shadow-md rounded-lg">
+            <h2 class="text-lg font-bold text-purple-600 mb-4">Location</h2>
+            <p>
+              tiger_name's freinds are predominantly found in India, with
+              smaller populations in Bangladesh, Nepal, and Bhutan. They inhabit
+              a variety of landscapes, from dense tropical forests to grasslands
+              and mangrove swamps.
+            </p>
+            <canvas id="locationChart"></canvas>
+          </div>
+        </div>
+
+        <div id="tourism" class="tab-content hidden">
+          <div class="bg-blue-50 p-4 shadow-md rounded-lg">
+            <h2 class="text-lg font-bold text-blue-600 mb-4">
+              Tourism and Conservation Efforts
+            </h2>
+            <p>
+              Tourism in tiger reserves, especially in India, has had both
+              positive and negative impacts on tigers like tiger_name. Overall,
+              in regions where tourism is well-regulated, tiger populations have
+              generally benefited from the increased funds and awareness
+              generated.
+            </p>
+            <ul class="space-y-2 list-disc pl-6">
+              <li>
+                Positive Effects: Ecotourism generates significant funds for
+                conservation and raises awareness about the importance of
+                preserving tigers and their habitats. Well-regulated tourism
+                also provides the resources needed for anti-poaching patrols,
+                habitat restoration, and monitoring tiger populations.
+              </li>
+              <li>
+                Negative Effects: Unregulated tourism can disturb tigers'
+                natural behaviors, leading to stress and displacement. Safari
+                vehicles, large groups of visitors, and noise pollution can
+                alter tiger movement patterns, especially during breeding
+                seasons. In some cases, this has led to increased human-wildlife
+                conflict. The tourism industry also sometimes encroaches on
+                tiger habitats, affecting their natural range.
+              </li>
+            </ul>
+
+            <canvas id="conservationChart"></canvas>
+          </div>
+        </div>
+
+        <div id="habitat-info" class="tab-content hidden">
+          <div class="bg-red-50 p-4 shadow-md rounded-lg">
+            <h2 class="text-lg font-bold text-red-600 mb-4">
+              Habitat Information
+            </h2>
+            <ul class="space-y-2">
+              <li>Location: Sundarbans</li>
+              <li>Temperature: 22-30°C (68-95°F)</li>
+              <li>Biome: Tropical Forest</li>
+              <li>Protection Status: Protected</li>
+            </ul>
+            <canvas id="BiomeChart"></canvas>
+          </div>
+        </div>
+        <div id="poaching" class="tab-content hidden">
+          <div class="bg-yellow-100 p-4 shadow-md rounded-lg">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h3 class="text-yellow-600 font-bold mb-2">Poaching</h3>
+                <p>
+                  Poaching remains a significant threat to the tiger
+                  populations, although concerted efforts by governments have
+                  led to a reduction in illegal hunting in many regions.
+                </p>
+                <ul class="space-y-2 list-disc pl-6">
+                  <li>
+                    2018–2022: While poaching rates have decreased, Bengal
+                    tigers are still targeted for their skins, bones, and other
+                    body parts used in traditional medicine and the black
+                    market. According to the Wildlife Protection Society of
+                    India (WPSI), the number of tigers poached in India dropped
+                    from 19 in 2018 to 12 in 2021. However, poaching remains a
+                    concern in areas with less effective enforcement.
+                  </li>
+                  <li>
+                    In addition to targeted poaching, human-wildlife conflict
+                    has led to retaliatory killings by farmers and villagers,
+                    contributing to tiger deaths.
+                  </li>
+                  <li>
+                    Project Tiger (Launched in 1973) is one of the most
+                    successful tiger conservation programs globally. Over the
+                    years, it has led to the establishment of numerous Tiger
+                    Reserves across India. The project emphasizes habitat
+                    protection, anti-poaching measures, and community
+                    engagement.
+                  </li>
+                  <li>
+                    Anti-Poaching Units (APUs) have been set up in many tiger
+                    reserves, employing forest rangers to monitor and combat
+                    poaching.
+                  </li>
+                </ul>
+                <canvas id="PoachingChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="questions-and-help" class="tab-content hidden">
+          <!-- Q&A Section -->
+          <div class="bg-white shadow-md rounded-lg p-8 mt-8">
+            <h2 class="text-xl font-bold text-yellow-700 mb-4">AI Q & A</h2>
+            <div>
+              <textarea
+                id="questionInput"
+                class="w-full p-2 border rounded-lg"
+                rows="4"
+                placeholder="Ask a question about Bengal Tigers..."
+              ></textarea>
+              <button
+                id="askButton"
+                class="mt-4 bg-yellow-500 text-white p-2 rounded-lg hover:bg-yellow-600 focus:outline-none"
+              >
+                Ask
+              </button>
+            </div>
+            <div id="answerContainer" class="mt-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include marked.js for Markdown to HTML conversion -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Chart.js Scripts and Other JavaScript -->
+    <script>
+      // Tab functionality
+      const tabs = document.querySelectorAll(".tab-btn");
+      const contents = document.querySelectorAll(".tab-content");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          // Remove active state from all tabs
+          tabs.forEach((t) => t.classList.remove("active-tab"));
+          // Hide all content
+          contents.forEach((content) => content.classList.add("hidden"));
+
+          // Activate the clicked tab
+          tab.classList.add("active-tab");
+
+          // Show the corresponding content
+          const target = document.getElementById(tab.dataset.target);
+          target.classList.remove("hidden");
+        });
+      });
+
+      // Population Trends Chart
+      const populationCtx = document
+        .getElementById("populationChart")
+        .getContext("2d");
+      new Chart(populationCtx, {
+        type: "line",
+        data: {
+          labels: ["2018", "2019", "2020", "2021", "2022", "Present"],
+          datasets: [
+            {
+              label: "Tiger Population (India)",
+              data: [2226, 2500, 2500, 2967, 2900, 3200], // Replace with dynamic data
+              borderColor: "rgba(255, 99, 132, 1)",
+              backgroundColor: "rgba(255, 99, 132, 0.2)",
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: { responsive: true },
+      });
+
+      // Biome Chart
+      const BiomeCtx = document.getElementById("BiomeChart").getContext("2d");
+      new Chart(BiomeCtx, {
+        type: "pie",
+        data: {
+          labels: [
+            "Tropical and subtropical",
+            "Dry deciduous forests",
+            "Mangroves (Sundarbans)",
+            "Alluvial grasslands",
+            "Tropical forests",
+            "Montane forests",
+          ],
+          datasets: [
+            {
+              label: "Geographic Distribution",
+              data: [50, 25, 15, 15, 5, 5], // Data in percentages
+              backgroundColor: [
+                "rgba(255, 25, 33, 0.9)",
+                "rgba(255, 34, 22, 0.3)",
+                "rgba(255, 55, 11, 0.8)",
+                "rgba(255, 90, 10, 0.4)",
+                "rgba(255, 65, 18, 0.7)",
+                "rgba(255, 12, 20, 0.5)",
+              ],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const label = context.label || "";
+                  const value = context.raw || 0;
+                  return `${label}: ${value}%`;
+                },
+              },
+            },
+          },
+        },
+      });
+
+      // Conservation Efforts Chart
+      const conservationCtx = document
+        .getElementById("conservationChart")
+        .getContext("2d");
+      new Chart(conservationCtx, {
+        type: "bar",
+        data: {
+          labels: ["2018", "2019", "2020", "2021"],
+          datasets: [
+            {
+              label: "Conservation Funding",
+              data: [50, 60, 30, 75], // Replace with dynamic data
+              backgroundColor: "rgba(75, 192, 192, 0.8)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+            {
+              label: "Tourism Revenue",
+              data: [100, 120, 60, 150], // Replace with dynamic data
+              backgroundColor: "rgba(60, 120, 192, 0.9)",
+              borderColor: "rgba(60, 120, 192, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              stacked: false,
+            },
+            y: {
+              stacked: false,
+            },
+          },
+        },
+      });
+
+      // Poaching Chart
+      const PoachingCtx = document
+        .getElementById("PoachingChart")
+        .getContext("2d");
+      new Chart(PoachingCtx, {
+        type: "line",
+        data: {
+          labels: ["2018", "2019", "2020", "2021"],
+          datasets: [
+            {
+              label: "",
+              data: [19, 14, 12, 12],
+              backgroundColor: [
+                "rgba(255, 159, 64, 0.8)",
+                "rgba(255, 99, 132, 0.8)",
+              ],
+              borderWidth: 4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+
+      // Geographic Chart
+      const locationCtx = document
+        .getElementById("locationChart")
+        .getContext("2d");
+      new Chart(locationCtx, {
+        type: "pie",
+        data: {
+          labels: ["India", "Bangladesh", "Nepal", "Bhutan"],
+          datasets: [
+            {
+              label: "Geographic Distribution",
+              data: [75, 10, 7, 5],
+              backgroundColor: [
+                "rgba(160, 32, 240, 0.9)",
+                "rgba(160, 32, 240, 0.3)",
+                "rgba(160, 66, 250, 0.8)",
+                "rgba(170, 70, 150, 0.9)",
+              ],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const label = context.label || "";
+                  const value = context.raw || 0;
+                  return `${label}: ${value}%`;
+                },
+              },
+            },
+          },
+        },
+      });
+
+      // Q&A Section Script
+      document
+        .getElementById("askButton")
+        .addEventListener("click", async function () {
+          const question = document
+            .getElementById("questionInput")
+            .value.trim();
+          if (!question) return;
+          // Send question to backend
+          const response = await fetch("/ask", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ question }),
+          });
+
+          const data = await response.json();
+          if (data && data.answer) {
+            // Convert markdown response to HTML and display it
+            const htmlAnswer = marked.parse(data.answer);
+            document.getElementById("answerContainer").innerHTML = htmlAnswer;
+          } else {
+            document.getElementById("answerContainer").innerHTML =
+              "<p>Sorry, something went wrong.</p>";
+          }
+        });
+    </script>
+  </body>
+</html>

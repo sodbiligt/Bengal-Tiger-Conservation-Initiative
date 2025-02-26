@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bengal Tiger Conservation Project</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-orange-200 flex items-center justify-center h-screen">
+  <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-md text-center">
+    <div class="flex flex-col items-center mb-6">
+      <span class="text-7xl">🐯</span>
+      <h1 class="text-2xl font-bold text-orange-700 mt-2">Bengal Tiger Conservation Project</h1>
+    </div>
+    <p class="text-gray-700 mb-6">
+      Welcome to the Bengal Tiger Conservation Project! Help us protect these magnificent creatures by naming your very own tiger.
+    </p>
+    <form id="tigerForm" class="space-y-4">
+      <input type="text" id="tiger_name" name="tiger_name" placeholder="Enter your tiger's name"
+        class="border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring focus:ring-orange-200 focus:ring-opacity-50 w-full px-4 py-2"
+        required>
+      <button type="submit"
+        class="bg-orange-700 hover:bg-orange-800 text-white font-medium py-2 px-4 rounded-md w-full">
+        Name Your Tiger
+      </button>
+    </form>
+
+    <!-- Greeting Message -->
+    <div id="greeting" class="mt-6 hidden text-lg font-bold text-green-700"></div>
+  </div>
+
+  <script>
+    document.getElementById("tigerForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the form from submitting traditionally
+
+      const tigerName = document.getElementById("tiger_name").value;
+      if (tigerName) {
+        // Display a greeting message
+        const greetingDiv = document.getElementById("greeting");
+        greetingDiv.textContent = `Meet, ${tigerName}! Let's learn more about your tiger...`;
+        greetingDiv.classList.remove("hidden");
+
+        // Redirect to dashboard.html with the tiger's name as a query parameter after a delay
+        setTimeout(() => {
+          window.location.href = `dashboard.html?tiger_name=${encodeURIComponent(tigerName)}`;
+        }, 2000); // 2-second delay
+      }
+    });
+  </script>
+</body>
+</html>
